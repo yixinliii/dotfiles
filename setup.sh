@@ -74,6 +74,22 @@ create_vim_link() {
     fi
 }
 
+create_tmux_link() {
+    local source_file=".tmux.conf"
+    local target_file="$HOME/.tmux.conf"
+
+    # Check if the '.vimrc' file exists at the current location
+    if [ -f "$source_file" ]; then
+        # Backup the original .vimrc if it exists
+        [ -f "$target_file" ] && mv "$target_file" "${target_file}.bak"
+
+        ln -sf "$(pwd)/$source_file" "$target_file"
+        echo "Symbolic link for tmux created successfully!"
+    else
+        echo "Error: The '$source_file' file does not exist in the current directory."
+        return 1
+    fi
+}
 
 # Check for the command-line argument
 if [ $# -eq 0 ]; then
@@ -94,6 +110,9 @@ case $1 in
 	;;
     vim)
 	create_vim_link
+	;;
+    tmux)
+	create_tmux_link
 	;;
     *)
         echo "Invalid argument: $1. Please specify 'nvim' or 'zshrc'."
