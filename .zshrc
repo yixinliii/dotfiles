@@ -101,6 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias qt="~/Qt/Tools/QtCreator/bin/qtcreator"
 alias vim="nvim"
+alias sc="ssh yixinli@sc.stanford.edu"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
