@@ -2,9 +2,11 @@ alias ll="ls -l"
 alias dino="cd /afs/cs.stanford.edu/u/yixinli/FInetuneDINO"
 alias v="vim"
 alias ts="pestat -p orion -G"
+alias a6000="srun --account=orion --partition=orion-interactive --gres=gpu:a6000:1 --cpus-per-task=10 --time=480 --mem=32G --nodelist=oriong13 --pty bash"
+alias a5000="srun --account=orion --partition=orion-interactive --gres=gpu:a5000:1 --cpus-per-task=10 --time=480 --mem=32G --nodelist=oriong12 --pty bash"
+alias cpu="srun --account=orion --partition=orion-interactive --cpus-per-task=10 --time=480 --mem=32G --nodelist=oriong12 --pty bash"
 
 export HF_HOME=/orion/u/yixinli/.cache/huggingface
-alias h="cd /orion/u/yixinli"
 export TORCH_HOME=/orion/u/yixinli
 export HOME=/orion/u/yixinli
 
