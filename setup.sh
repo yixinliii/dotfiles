@@ -22,6 +22,28 @@ create_zshrc_link() {
     fi
 }
 
+# Function to create a symbolic link for .bashrc
+create_bashrc_link() {
+    if [ -f ".bashrc" ]; then
+        ln -sf "$(pwd)/.bashrc" "$HOME/.bashrc"
+        echo "Symbolic link for .bashrc created successfully!"
+    else
+        echo "Error: The '.bashrc' file does not exist in the current directory."
+        exit 1
+    fi
+}
+
+# Function to create a symbolic link for .vimrc
+create_vim_link() {
+    if [ -f ".vimrc" ]; then
+        ln -sf "$(pwd)/.vimrc" "$HOME/.vimrc"
+        echo "Symbolic link for .vimrc created successfully!"
+    else
+        echo "Error: The '.vimrc' file does not exist in the current directory."
+        exit 1
+    fi
+}
+
 # Check for the command-line argument
 if [ $# -eq 0 ]; then
     echo "Error: No arguments provided. Please specify 'nvim' or 'zshrc'."
@@ -36,6 +58,12 @@ case $1 in
     zsh)
         create_zshrc_link
         ;;
+    bash)
+	create_bashrc_link
+	;;
+    vim)
+	create_vim_link
+	;;
     *)
         echo "Invalid argument: $1. Please specify 'nvim' or 'zshrc'."
         exit 1
