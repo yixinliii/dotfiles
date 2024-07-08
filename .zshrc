@@ -110,9 +110,24 @@ if [[ "$(hostname)" == "Kaiweis-MBP" ]]; then
         eval "$__conda_setup"
     else
         if [ -f "/Users/yixinliii/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/Users/yixinliii/miniconda3/etc/profile.d/conda.sh"
+# . "/Users/yixinliii/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
         else
-            export PATH="/Users/yixinliii/miniconda3/bin:$PATH"
+# export PATH="/Users/yixinliii/miniconda3/bin:$PATH"  # commented out by conda initialize
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+elif [[ "$(hostname)" == "YL-Desktop" ]]; then
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/home/yixinli/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/home/yixinli/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/yixinli/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/yixinli/miniconda3/bin:$PATH"
         fi
     fi
     unset __conda_setup
